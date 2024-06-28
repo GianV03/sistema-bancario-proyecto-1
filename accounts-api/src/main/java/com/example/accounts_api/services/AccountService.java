@@ -2,9 +2,7 @@ package com.example.accounts_api.services;
 
 import com.example.accounts_api.entities.Account;
 import com.example.accounts_api.repositories.AccountRepository;
-import com.example.accounts_api.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -23,20 +21,15 @@ public class AccountService {
         return accountRepository.findById(id);
     }
 
+    public Flux<Account> getAccountsByClientId(String clientId) {
+        return accountRepository.findByClientId(clientId);
+    }
+
     public Mono<Account> createAccount(Account account) {
         return accountRepository.save(account);
     }
 
-    public Mono<Account> updateAccount(String id, Account account) {
-        return accountRepository.findById(id)
-                .flatMap(existingAccount -> {
-                    existingAccount.setType(account.getType());
-                    existingAccount.setBalance(account.getBalance());
-                    return accountRepository.save(existingAccount);
-                });
-    }
-
-    public Mono<Void> deleteAccount(String id) {
+    public Mono<Void> deleteAccountById(String id) {
         return accountRepository.deleteById(id);
     }
 }
