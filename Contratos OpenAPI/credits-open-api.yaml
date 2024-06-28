@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: API de Créditos
+  description: API para gestionar créditos bancarios
+  version: 1.0.0
+paths:
+  /api/credits:
+    get:
+      summary: Obtener todos los créditos
+      operationId: getAllCredits
+      tags:
+        - Credits
+      responses:
+        "200":
+          description: Lista de créditos obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+
+    post:
+      summary: Generar un nuevo crédito
+      operationId: createCredit
+      tags:
+        - Credits
+      requestBody:
+        required: true
+        content: application/json
+
+      responses:
+        "201":
+          description: Crédito creado exitosamente
+          content: application/json
+
+  /api/credits/{id}:
+    get:
+      summary: Obtener crédito por ID
+      operationId: getCreditById
+      tags:
+        - Credits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Crédito encontrado
+          content: application/json
+
+        "404":
+          description: Crédito no encontrado
+    delete:
+      summary: Eliminar crédito por ID
+      operationId: deleteCreditById
+      tags:
+        - Credits
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Crédito eliminado
+        "404":
+          description: Crédito no encontrado
+  /api/credits/client/{clientId}:
+    get:
+      summary: Obtener créditos por ID de cliente
+      operationId: getCreditsByClientId
+      tags:
+        - Credits
+      parameters:
+        - name: clientId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Lista de créditos obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
