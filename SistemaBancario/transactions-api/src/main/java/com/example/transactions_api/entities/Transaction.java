@@ -12,7 +12,6 @@ public class Transaction {
     @Id
     private String id;
     private String accountId;
-    private String clientId;
     private double amount;
     private TransactionType transactionType; // e.g., "DEPOSIT", "WITHDRAWAL"
     private LocalDateTime date;
