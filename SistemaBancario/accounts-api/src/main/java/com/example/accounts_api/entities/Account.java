@@ -1,7 +1,9 @@
 package com.example.accounts_api.entities;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Document(collection = "accounts")
 public class Account {
@@ -44,4 +46,14 @@ public class Account {
         this.clientId = clientId;
     }
 // Constructors, getters, setters, toString methods
+
+    public Account(String id, String type, double balance, String clientId) {
+        this.id = id;
+        this.type = type;
+        this.balance = balance;
+        this.clientId = clientId;
+    }
+
+    public Account() {
+    }
 }
