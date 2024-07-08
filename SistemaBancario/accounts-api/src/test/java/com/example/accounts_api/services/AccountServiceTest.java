@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class AccountServiceTest {
+class AccountServiceTest {
 
     @Mock
     private AccountRepository accountRepository;
@@ -30,7 +30,7 @@ public class AccountServiceTest {
     private Account account;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         account = new Account();
         account.setId("1");
         account.setClientId("client1");
@@ -38,7 +38,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testGetAllAccounts() {
+    void testGetAllAccounts() {
         when(accountRepository.findAll()).thenReturn(Flux.fromIterable(Arrays.asList(account)));
 
         StepVerifier.create(accountService.getAllAccounts())
@@ -47,7 +47,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testGetAccountById() {
+    void testGetAccountById() {
         when(accountRepository.findById(anyString())).thenReturn(Mono.just(account));
 
         StepVerifier.create(accountService.getAccountById("1"))
@@ -56,7 +56,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testGetAccountsByClientId() {
+    void testGetAccountsByClientId() {
         when(accountRepository.findByClientId(anyString())).thenReturn(Flux.fromIterable(Arrays.asList(account)));
 
         StepVerifier.create(accountService.getAccountsByClientId("client1"))
@@ -65,7 +65,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testCreateAccount() {
+    void testCreateAccount() {
         when(accountRepository.save(any(Account.class))).thenReturn(Mono.just(account));
 
         StepVerifier.create(accountService.createAccount(account))
@@ -74,7 +74,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testDeleteAccountById() {
+    void testDeleteAccountById() {
         when(accountRepository.deleteById(anyString())).thenReturn(Mono.empty());
 
         StepVerifier.create(accountService.deleteAccountById("1"))
@@ -84,7 +84,7 @@ public class AccountServiceTest {
     }
 
     @Test
-    public void testUpdateAccountBalance() {
+    void testUpdateAccountBalance() {
         when(accountRepository.findById(anyString())).thenReturn(Mono.just(account));
         when(accountRepository.save(any(Account.class))).thenReturn(Mono.just(account));
 

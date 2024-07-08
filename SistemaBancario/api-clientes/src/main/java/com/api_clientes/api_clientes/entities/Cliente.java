@@ -13,4 +13,6 @@ public class Cliente {
     private String name;
     private ClienteType type; // "personal" o "empresarial"
 
+
+
 }

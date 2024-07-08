@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-public class AccountControllerTest {
+class AccountControllerTest {
 
     @Autowired
     private WebTestClient webTestClient;
@@ -25,7 +25,7 @@ public class AccountControllerTest {
     private AccountService accountService;
 
     @Test
-    public void testGetAccountById() {
+    void testGetAccountById() {
 
         Account mockAccount = new Account("1", "Savings", 100.0, "client1");
         when(accountService.getAccountById("1")).thenReturn(Mono.just(mockAccount));
@@ -44,7 +44,7 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void testGetAllAccounts() {
+    void testGetAllAccounts() {
 
         Account account1 = new Account("1", "Savings", 100.0, "client1");
         Account account2 = new Account("2", "Checking", 200.0, "client2");

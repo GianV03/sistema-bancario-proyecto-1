@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class AccountTest {
+class AccountTest {
 
     @Test
-    public void testAccountGettersAndSetters() {
+    void testAccountGettersAndSetters() {
         Account account = new Account();
 
         account.setId("123");
@@ -22,7 +22,7 @@ public class AccountTest {
     }
 
     @Test
-    public void testAccountConstructor() {
+    void testAccountConstructor() {
         Account account = new Account();
         account.setId("123");
         account.setType("savings");
