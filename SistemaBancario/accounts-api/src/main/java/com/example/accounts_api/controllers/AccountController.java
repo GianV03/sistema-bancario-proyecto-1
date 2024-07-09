@@ -35,8 +35,12 @@ public class AccountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Account> createAccount(@RequestBody Account account) {
-        return accountService.createAccount(account);
+    public Mono<ResponseEntity<Account>> createAccount(@RequestBody Account account) {
+        return accountService.createAccount(account)
+                .map(savedAccount -> ResponseEntity.ok(savedAccount))
+                .onErrorResume(e -> {
+                        return Mono.error(e);
+                });
     }
 
     @DeleteMapping("/{id}")

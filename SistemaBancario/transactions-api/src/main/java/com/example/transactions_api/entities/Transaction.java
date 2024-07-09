@@ -13,10 +13,22 @@ public class Transaction {
     private String id;
     private String accountId;
     private double amount;
-    private TransactionType transactionType; // e.g., "DEPOSIT", "WITHDRAWAL"
+    private double commission;
+    private TransactionType transactionType; // "DEPOSIT", "WITHDRAWAL"
     private LocalDateTime date;
 }
 
-enum TransactionType{
-    DEPOSIT, WITHDRAWAL
+ enum TransactionType {
+    DEPOSIT(0.01), // Comisión del 1%
+    WITHDRAWAL(0.02); // Comisión del 2%
+
+    private final double commission;
+
+    TransactionType(double commission) {
+        this.commission = commission;
+    }
+
+    public double getCommission() {
+        return commission;
+    }
 }

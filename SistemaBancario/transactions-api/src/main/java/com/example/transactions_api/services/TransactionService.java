@@ -45,7 +45,7 @@ public class TransactionService {
 
     private String createKafkaMessage(Transaction transaction) {
 
-        return String.format("{\"accountId\":\"%s\", \"amount\":%s}", transaction.getAccountId(), transaction.getAmount());
+        return String.format("{\"accountId\":\"%s\", \"amount\":%s, \"type\":%s}", transaction.getAccountId(), transaction.getAmount(), transaction.getTransactionType());
     }
 
 }
