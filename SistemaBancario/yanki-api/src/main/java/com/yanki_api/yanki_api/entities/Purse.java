@@ -1,7 +1,9 @@
 package com.yanki_api.yanki_api.entities;
 
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+@Data
 public class Purse {
     @Id
     private String id;
