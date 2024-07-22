@@ -39,4 +39,16 @@ public class PurseController {
         return purseService.updateBalance(id, amount)
                 .map(updatedPurse -> ResponseEntity.ok(updatedPurse));
     }
+
+    @PostMapping("/transfer")
+    public Single<String> transferMoney(
+            @RequestParam String fromPhoneNumber,
+            @RequestParam String toPhoneNumber,
+            @RequestParam double amount
+    ) {
+        return purseService.transferMoneyByPhoneNumber(fromPhoneNumber, toPhoneNumber, amount)
+                .map(purse -> "Transfer successful to purse with phone number: " + purse.getPhoneNumber());
+    }
+
+
 }

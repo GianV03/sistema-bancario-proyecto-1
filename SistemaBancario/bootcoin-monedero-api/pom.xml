@@ -7,10 +7,10 @@
 		<artifactId>SistemaBancario</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.yanki-api</groupId>
-	<artifactId>yanki-api</artifactId>
+	<groupId>com.sistema-bancario</groupId>
+	<artifactId>bootcoin-monedero-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yanki-api</name>
+	<name>bootcoin-monedero-api</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -25,23 +25,13 @@
 		<tag/>
 		<url/>
 	</scm>
-    <properties>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- Reactor Test -->
-		<dependency>
-			<groupId>io.projectreactor</groupId>
-			<artifactId>reactor-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
