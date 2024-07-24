@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: API de Clientes
+  description: API para gestionar clientes
+  version: 1.0.0
+paths:
+  /clientes:
+    get:
+      summary: Obtener todos los clientes
+      operationId: getAllClientes
+      responses:
+        '200':
+          description: Lista de clientes obtenida exitosamente
+          content:
+            application/json
+              schema:
+                type: array
+    post:
+      summary: Crear un nuevo cliente
+      operationId: createCliente
+      requestBody:
+        required: true
+        content:
+          application/json
+
+      responses:
+        '200':
+          description: Cliente creado exitosamente
+          content:
+            application/json
+
+  /clientes/{id}:
+    get:
+      summary: Obtener cliente por ID
+      operationId: getClienteById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json
+
+        '404':
+          description: Cliente no encontrado
+
+    put:
+      summary: Actualizar cliente por ID
+      operationId: updateCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json
+
+      responses:
+        '200':
+          description: Cliente actualizado exitosamente
+          content:
+            application/json
+
+        '404':
+          description: Cliente no encontrado
+
+    delete:
+      summary: Eliminar cliente por ID
+      operationId: deleteCliente
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Cliente eliminado 
+        '404':
+          description: Cliente no encontrado
+
+  /clientes/tipo/{tipo}:
+    get:
+      summary: Obtener clientes por tipo
+      operationId: getClientesByTipo
+      parameters:
+        - name: tipo
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Se ha obtenido la lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
