@@ -29,6 +29,8 @@ public class BootcoinTransactionService {
         transaction.setTransactionNumber(UUID.randomUUID().toString());
         transaction.setTimestamp(LocalDateTime.now());
 
+
+
         return Single.fromPublisher(bootCoinTransactionRepository.save(transaction))
                 .doOnSuccess(savedTransaction -> kafkaTemplate.send("bootcoin-transactions", savedTransaction.getTransactionNumber(), savedTransaction.toString()));
     }
